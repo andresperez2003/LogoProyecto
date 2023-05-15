@@ -9,10 +9,10 @@ package co.edu.autonoma.classLogo;
  * @author ASUS
  */
 public abstract class Sprite  {
-    private int posX;
-    private int posY;
-    private int width;
-    private int height;
+    protected int posX;
+    protected int posY;
+    protected int width;
+    protected int height;
 
     public Sprite(int posX, int posY, int width, int height) {
         this.posX = posX;

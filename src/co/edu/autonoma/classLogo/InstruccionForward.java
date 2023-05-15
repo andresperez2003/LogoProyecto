@@ -11,6 +11,10 @@ package co.edu.autonoma.classLogo;
 public class InstruccionForward extends InstruccionTortuga {
     private int distance;
 
+    public InstruccionForward(int distance) {
+        this.distance = distance;
+    }
+
     /**
      * @return the distance
      */
@@ -23,6 +27,10 @@ public class InstruccionForward extends InstruccionTortuga {
      */
     public void setDistance(int distance) {
         this.distance = distance;
+    }
+    
+    public int parameter(){
+        return -getDistance();
     }
     
 }

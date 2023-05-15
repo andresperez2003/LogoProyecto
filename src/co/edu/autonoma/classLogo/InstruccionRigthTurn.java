@@ -9,19 +9,24 @@ package co.edu.autonoma.classLogo;
  * @author ASUS
  */
 public class InstruccionRigthTurn extends InstruccionTortuga{
-    private float degree;
+    private int degree;
+
+    public InstruccionRigthTurn(int degree) {
+        this.degree = degree;
+    }
+
 
     /**
      * @return the degree
      */
-    public float getDegree() {
+    public int getDegree() {
         return degree;
     }
 
     /**
      * @param degree the degree to set
      */
-    public void setDegree(float degree) {
+    public void setDegree(int degree) {
         this.degree = degree;
     }
 }

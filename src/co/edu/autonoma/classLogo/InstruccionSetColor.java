@@ -4,10 +4,33 @@
  */
 package co.edu.autonoma.classLogo;
 
+import java.awt.Color;
+
 /**
  *
  * @author ASUS
  */
 public class InstruccionSetColor extends InstruccionTortuga {
+    private Color color;
+
+    public InstruccionSetColor(Color color) {
+        this.color = color;
+    }
+    
+    
+
+    /**
+     * @return the color
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(Color color) {
+        this.color = color;
+    }
     
 }

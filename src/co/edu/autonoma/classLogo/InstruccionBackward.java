@@ -11,17 +11,23 @@ package co.edu.autonoma.classLogo;
 public class InstruccionBackward extends InstruccionTortuga {
     private int distance;
 
-    /**
-     * @return the distance
-     */
+
+    
+    public InstruccionBackward(int distance) {
+        this.distance = distance;
+    }
+
     public int getDistance() {
         return distance;
     }
 
+    public int parameter(){
+        return getDistance();
+    }
     /**
      * @param distance the distance to set
      */
     public void setDistance(int distance) {
-        this.distance = distance;
+        this.distance = -distance;
     }
 }
