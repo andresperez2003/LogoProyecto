@@ -10,17 +10,22 @@ import java.awt.Color;
  *
  * @author ASUS
  */
-public class Tortuga {
+public class Tortuga extends Sprite implements Drawable{
     private Color color;
-    private float degree;
+    private int degree;
 
-    public Tortuga(Color color, float degree) {
+    public Tortuga(Color color, int degree, int posX, int posY, int width, int height) {
+        super(posX, posY, width, height);
         this.color = color;
         this.degree = degree;
     }
 
-    public void move(){
-        
+    
+
+    public void move(int distance){
+        //PosY = Cost(angulo)*distance
+        //PosX= Cos(angulo)*distance
+        posY = posY+distance;
     }
     /**
      * @return the color
@@ -39,15 +44,20 @@ public class Tortuga {
     /**
      * @return the degree
      */
-    public float getDegree() {
+    public int getDegree() {
         return degree;
     }
 
     /**
      * @param degree the degree to set
      */
-    public void setDegree(float degree) {
+    public void setDegree(int degree) {
         this.degree = degree;
+    }
+
+    @Override
+    public void redraw() {
+        
     }
     
     
