@@ -11,9 +11,9 @@ import java.awt.Color;
  * @author ASUS
  */
 public class InstruccionSetColor extends InstruccionTortuga {
-    private Color color;
+    private String color;
 
-    public InstruccionSetColor(Color color) {
+    public InstruccionSetColor(String color) {
         this.color = color;
     }
     
@@ -22,14 +22,14 @@ public class InstruccionSetColor extends InstruccionTortuga {
     /**
      * @return the color
      */
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
     /**
      * @param color the color to set
      */
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
     

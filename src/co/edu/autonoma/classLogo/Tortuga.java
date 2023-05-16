@@ -14,12 +14,12 @@ import javax.swing.ImageIcon;
  * @author ASUS
  */
 public class Tortuga extends Sprite implements Drawable{
-    private Color color;
+    private String color; 
     private int degree;
     private Drawable drawable;
-    ArrayList<Rastro> rastros ;
-
-    public Tortuga(Color color, int degree, int posX, int posY) {
+    private Dimensionable dimensionable;
+    private ArrayList<Rastro> rastros ;
+    public Tortuga(String color, int degree, int posX, int posY) {
         super(posX, posY, 50, 50);
         this.color = color;
         this.degree = degree;
@@ -27,16 +27,34 @@ public class Tortuga extends Sprite implements Drawable{
     }
 
     
-
+    public void resetMove(){
+        setColor("#0000");
+        setDegree(0);
+        posX = getDimensionable().getWidth()/2;
+        posY = getDimensionable().getHeight()/2;
+        getRastros().clear();
+        redraw();
+    }
+    
+    public void resetPosition(){
+        setDegree(0);
+        int posXInical = posX;
+        int posYInicial = posY;
+        posX = getDimensionable().getWidth()/2;
+        posY = getDimensionable().getHeight()/2;
+        crearRastro(posXInical, posYInicial, posX, posY, color);
+        redraw();
+    }
+    
     public void move(int distance){
         int x1 = posX;
         int y1 = posY;
-        posX += Math.sin(Math.toRadians(degree))*distance;
-        posY += Math.cos(Math.toRadians(degree))*distance;
+        posX += Math.sin(Math.toRadians(getDegree()))*distance;
+        posY += Math.cos(Math.toRadians(getDegree()))*distance;
         int x2 = posX;
         int y2 = posY;
         
-        crearRastro(x1, y1, x2, y2);
+        crearRastro(x1, y1, x2, y2,this.getColor());
         redraw();
     }
     
@@ -47,18 +65,19 @@ public class Tortuga extends Sprite implements Drawable{
         dibujarRastro(g);
     }
     
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
     
     
-    public void crearRastro(int x1, int y1, int x2, int y2){
-        Rastro rastro = new Rastro(x1, x2, y1, y2);
-        rastros.add(rastro);
+    public void crearRastro(int x1, int y1, int x2, int y2, String color){
+        Rastro rastro = new Rastro(x1, x2, y1, y2,color);
+        getRastros().add(rastro);
     }
     
     public void dibujarRastro(Graphics g) {
-        for (Rastro actual : rastros) {
+        for (Rastro actual : getRastros()) {
+            g.setColor(Color.decode(actual.getColor()));
             g.drawLine(actual.getX1(), actual.getY1(), actual.getX2(), actual.getY2());
         }
     }
@@ -66,7 +85,7 @@ public class Tortuga extends Sprite implements Drawable{
     /**
      * @param color the color to set
      */
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -89,11 +108,46 @@ public class Tortuga extends Sprite implements Drawable{
     
     @Override
     public void redraw() {
-        drawable.redraw();
+        getDrawable().redraw();
     }
     
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
+    }
+
+    /**
+     * @return the drawable
+     */
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+    /**
+     * @return the dimensionable
+     */
+    public Dimensionable getDimensionable() {
+        return dimensionable;
+    }
+
+    /**
+     * @param dimensionable the dimensionable to set
+     */
+    public void setDimensionable(Dimensionable dimensionable) {
+        this.dimensionable = dimensionable;
+    }
+
+    /**
+     * @return the rastros
+     */
+    public ArrayList<Rastro> getRastros() {
+        return rastros;
+    }
+
+    /**
+     * @param rastros the rastros to set
+     */
+    public void setRastros(ArrayList<Rastro> rastros) {
+        this.rastros = rastros;
     }
     
     

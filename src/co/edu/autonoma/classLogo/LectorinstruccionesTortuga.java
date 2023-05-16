@@ -48,11 +48,10 @@ public class LectorinstruccionesTortuga {
                 this.getIntrucciones().add(movimiento);
             }
             case "sc", "setcolor" -> {
-                Color colortoSelect = defineColor(instruccion);
-                if(colortoSelect != null){
+                String value = division[1].toLowerCase();
+                String colortoSelect = defineColor(value);
                     controlador.setColor(colortoSelect);
                     this.getIntrucciones().add(movimiento);
-                }
             }
             case "r", "reset" -> {
                 controlador.reset();
@@ -77,26 +76,22 @@ public class LectorinstruccionesTortuga {
         return "";
     }
     
-    public Color defineColor(String color){
-        Color returnColor = null;
+    public String defineColor(String color){
         String newColor = color.toLowerCase();
-        switch (newColor) {
-            case "black" -> returnColor = Color.BLACK;
-            case "blue" -> returnColor = Color.BLUE;
-            case "cyan" -> returnColor = Color.CYAN;
-            case "gray" -> returnColor = Color.GRAY;
-            case "green" -> returnColor = Color.GREEN;
-            case "magenta" -> returnColor = Color.MAGENTA;
-            case "orange" -> returnColor = Color.ORANGE;
-            case "pink" -> returnColor = Color.PINK;
-            case "red" -> returnColor = Color.RED;
-            case "white" -> returnColor = Color.WHITE;
-            case "yellow" -> returnColor = Color.YELLOW;
-            default -> {
-                return returnColor;
-            }
-        }
-        return returnColor;
+        return switch (newColor) {
+            case "magenta" -> "#FF00FF";
+            case "orange" -> "#FF8000";
+            case "pink" -> "#FF0080";
+            case "white" -> "#FFFFFF";
+            case "yellow" -> "#FFFF00";
+            case "black" -> "#000000";
+            case "blue" -> "#0000FF";
+            case "cyan" -> "#00FFFF";
+            case "gray" -> "#9B9B9B";
+            case "green" -> "#00FF00";
+            case "red" -> "#FF0000";
+            default -> "#000000";
+        };
     }
 
     /**

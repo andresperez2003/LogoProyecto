@@ -4,6 +4,8 @@
  */
 package co.edu.autonoma.classLogo;
 
+import java.awt.Color;
+
 /**
  *
  * @author juane
@@ -13,13 +15,17 @@ public class Rastro {
     private int x2;
     private int y1;
     private int y2;
+    private String color;
 
-    public Rastro(int x1, int x2, int y1, int y2) {
+    public Rastro(int x1, int x2, int y1, int y2, String color) {
         this.x1 = x1;
         this.x2 = x2;
         this.y1 = y1;
         this.y2 = y2;
+        this.color = color;
     }
+
+
 
     /**
      * @return the x1
@@ -75,6 +81,20 @@ public class Rastro {
      */
     public void setY2(int y2) {
         this.y2 = y2;
+    }
+
+    /**
+     * @return the color
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
     }
     
     

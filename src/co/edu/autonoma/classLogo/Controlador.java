@@ -10,6 +10,8 @@ import Instrucciones.InstruccionSetColor;
 import Instrucciones.InstruccionBackward;
 import Instrucciones.InstruccionLeftTurn;
 import Instrucciones.InstruccionForward;
+import Instrucciones.InstruccionHome;
+import Instrucciones.InstruccionReset;
 import java.awt.Color;
 
 /**
@@ -40,35 +42,38 @@ public class Controlador {
     }
     
     public void forward(int distance){
-        InstruccionForward instruccion = new InstruccionForward(distance);
-        tortuga.move(instruccion.parameter());
+        InstruccionForward instruccionForward = new InstruccionForward(distance);
+        tortuga.move(instruccionForward.parameter());
     }
     
     public void backward(int distance){
-        InstruccionBackward instruccion = new InstruccionBackward(distance);
-        tortuga.move(instruccion.parameter());
+        InstruccionBackward instruccionBackward = new InstruccionBackward(distance);
+        tortuga.move(instruccionBackward.parameter());
     }
     
     public void rigthTurn(int degree){
-        InstruccionRigthTurn instruccion = new  InstruccionRigthTurn(degree);
-        tortuga.changeDegree(instruccion.getDegree());
+        InstruccionRigthTurn instruccionRigthTurn = new  InstruccionRigthTurn(degree);
+        tortuga.changeDegree(instruccionRigthTurn.getDegree());
     }
     
     public void leftTurn(int degree){
-        InstruccionLeftTurn instruccion = new InstruccionLeftTurn(degree);
-        tortuga.changeDegree(instruccion.getDegree());
+        InstruccionLeftTurn instruccionLeftTurn = new InstruccionLeftTurn(degree);
+        tortuga.changeDegree(instruccionLeftTurn.getDegree());
     }
     
-    public void setColor(Color color){
-        InstruccionTortuga instruccion = new InstruccionSetColor(color);
+    public void setColor(String color){
+        InstruccionSetColor instruccionSetColor = new InstruccionSetColor(color);
+        tortuga.setColor(instruccionSetColor.getColor());
     }
     
     public void reset(){
-        
+        InstruccionReset instruccionReset = new InstruccionReset();
+        tortuga.resetMove();
     }
     
     public void home(){
-        
+        InstruccionHome instruccionHome = new InstruccionHome();
+        tortuga.resetPosition();
     }
     
     public void load(){
