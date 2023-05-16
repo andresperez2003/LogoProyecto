@@ -4,29 +4,58 @@
  */
 package co.edu.autonoma.classLogo;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
- * @author ASUS
+ * @author juane
  */
-public class Tablero extends Sprite implements Drawable,Dimensionable {
+public class Tablero extends Sprite implements Drawable, Dimensionable{
+    
+    private Tortuga tortuga;
+    private Drawable drawable;
+    private Controlador controlador;
 
-    public Tablero(int posX, int posY, int width, int height) {
-        super(posX, posY, width, height);
+    public Tablero(int width, int height) {
+        super(0, 0, width, height);
+        tortuga = new Tortuga(Color.BLACK, 270,width/2, height/2);
+        tortuga.setDrawable(this);
+        tortuga.setArea(this);
+        controlador = new Controlador();
+        controlador.setTortuga(tortuga);
     }
+    
 
     @Override
     public void redraw() {
-       
+        drawable.redraw();
     }
 
     @Override
     public int getX() {
-        return 0;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public int getY() {
-       return 0;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        tortuga.draw(g);
+    }
+
+    /**
+     * @return the controlador
+     */
+    public Controlador getControlador() {
+        return controlador;
     }
     
 }

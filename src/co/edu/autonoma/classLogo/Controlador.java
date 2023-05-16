@@ -4,6 +4,12 @@
  */
 package co.edu.autonoma.classLogo;
 
+import Instrucciones.InstruccionTortuga;
+import Instrucciones.InstruccionRigthTurn;
+import Instrucciones.InstruccionSetColor;
+import Instrucciones.InstruccionBackward;
+import Instrucciones.InstruccionLeftTurn;
+import Instrucciones.InstruccionForward;
 import java.awt.Color;
 
 /**
@@ -35,21 +41,22 @@ public class Controlador {
     
     public void forward(int distance){
         InstruccionForward instruccion = new InstruccionForward(distance);
-        tortuga.move(instruccion.getDistance());
-        
+        tortuga.move(instruccion.parameter());
     }
     
     public void backward(int distance){
         InstruccionBackward instruccion = new InstruccionBackward(distance);
-        tortuga.move(instruccion.getDistance());
+        tortuga.move(instruccion.parameter());
     }
     
     public void rigthTurn(int degree){
-        InstruccionTortuga instruccion = new  InstruccionRigthTurn(degree);
+        InstruccionRigthTurn instruccion = new  InstruccionRigthTurn(degree);
+        tortuga.changeDegree(instruccion.getDegree());
     }
     
     public void leftTurn(int degree){
-        InstruccionTortuga instruccion = new InstruccionLeftTurn(degree);
+        InstruccionLeftTurn instruccion = new InstruccionLeftTurn(degree);
+        tortuga.changeDegree(instruccion.getDegree());
     }
     
     public void setColor(Color color){

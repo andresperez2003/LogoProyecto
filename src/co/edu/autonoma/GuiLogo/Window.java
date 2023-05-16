@@ -28,6 +28,12 @@ public class Window extends javax.swing.JFrame implements Drawable{
         
     }
     
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        tablero.draw(g);
+    }
+    
    public void setLector(LectorinstruccionesTortuga lector){
         this.LectorInstrucciones=lector;
     }

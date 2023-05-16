@@ -5,6 +5,7 @@
 package co.edu.autonoma.classLogo;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,14 @@ import javax.swing.JOptionPane;
  */
 public class LectorinstruccionesTortuga {
     private Controlador controlador;
+    private ArrayList<String> intrucciones;
+
+    public LectorinstruccionesTortuga(Controlador controlador) {
+        this.intrucciones = new ArrayList<>();
+        this.controlador = controlador;
+    }
+    
+    
 
     public boolean read(String movimiento) {
         String[] division = movimiento.split(" ");
@@ -21,24 +30,28 @@ public class LectorinstruccionesTortuga {
             case "fd", "forward" -> {
                     int distance = Integer.parseInt(division[1]);
                     controlador.forward(distance);
+                    this.getIntrucciones().add(movimiento);
             }
             case "bd", "backward" -> {
                     int distance = Integer.parseInt(division[1]);
                     controlador.backward(distance);
+                    this.getIntrucciones().add(movimiento);
             }
             case "rt", "rigthturn" -> {
                 int degree = Integer.parseInt(division[1]);
                 controlador.rigthTurn(degree);
-                
+                this.getIntrucciones().add(movimiento);
             }
             case "ld", "leftturn" -> {
                 int degree = Integer.parseInt(division[1]);
                 controlador.leftTurn(degree);
+                this.getIntrucciones().add(movimiento);
             }
             case "sc", "setcolor" -> {
                 Color colortoSelect = defineColor(instruccion);
                 if(colortoSelect != null){
                     controlador.setColor(colortoSelect);
+                    this.getIntrucciones().add(movimiento);
                 }
             }
             case "r", "reset" -> {
@@ -58,9 +71,6 @@ public class LectorinstruccionesTortuga {
             }
         }
         return true;
-    }
-
-    public LectorinstruccionesTortuga() {
     }
 
     public String returnMove() {
@@ -88,5 +98,15 @@ public class LectorinstruccionesTortuga {
         }
         return returnColor;
     }
+
+    /**
+     * @return the intrucciones
+     */
+    public ArrayList<String> getIntrucciones() {
+        return intrucciones;
+    }
+
+    
+    
     
 }

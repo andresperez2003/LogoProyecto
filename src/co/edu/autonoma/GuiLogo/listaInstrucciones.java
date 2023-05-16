@@ -7,6 +7,7 @@ package co.edu.autonoma.GuiLogo;
 import co.edu.autonoma.classLogo.LectorinstruccionesTortuga;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
@@ -17,25 +18,30 @@ import javax.swing.table.DefaultTableModel;
  */
 public class listaInstrucciones extends javax.swing.JDialog {
     DefaultTableModel list = new DefaultTableModel();
-    private LinkedList<String> misComandos;
+    private ArrayList<String> misComandos;
     /**
      * Creates new form listaInstrucciones
      */
-    public listaInstrucciones(java.awt.Frame parent, boolean modal, LinkedList<String> comandos) {
+    public listaInstrucciones(java.awt.Frame parent, boolean modal, ArrayList<String> comandos) {
         super(parent, modal);
         initComponents();
+        this.misComandos = new ArrayList<>();
         this.misComandos = comandos;
         llenar();
     }
 
     public void llenar(){
-        tblComandos.setModel(list);
-        String nombreColumna[] = {"Comandos"};
-        for(String comando: misComandos){
-            String fila[] = new String[nombreColumna.length];
-            fila[0] = comando;
-            list.addRow(fila);
-        }
+        String nombresColumnas[] = {"Comando"};
+        DefaultTableModel miModelo = new DefaultTableModel(null, nombresColumnas);
+        this.tblComandos.setModel(miModelo);
+        
+        for (String comando : this.misComandos) {
+                 
+                    String fila[] = new String[nombresColumnas.length];
+                    fila[0] = comando;
+                    miModelo.addRow(fila);
+    }
+        
     }
     
 //    public void crear(LectorinstruccionesTortuga lector){

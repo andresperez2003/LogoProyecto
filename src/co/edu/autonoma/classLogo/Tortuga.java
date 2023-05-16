@@ -5,6 +5,8 @@
 package co.edu.autonoma.classLogo;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,9 +15,10 @@ import java.awt.Color;
 public class Tortuga extends Sprite implements Drawable{
     private Color color;
     private int degree;
+    private Drawable drawable;
 
-    public Tortuga(Color color, int degree, int posX, int posY, int width, int height) {
-        super(posX, posY, width, height);
+    public Tortuga(Color color, int degree, int posX, int posY) {
+        super(posX, posY, 50, 50);
         this.color = color;
         this.degree = degree;
     }
@@ -23,13 +26,17 @@ public class Tortuga extends Sprite implements Drawable{
     
 
     public void move(int distance){
-        //PosY = Cost(angulo)*distance
-        //PosX= Cos(angulo)*distance
-        posY = posY+distance;
+        posX += Math.sin(degree)*distance;
+        posY += Math.cos(degree)*distance;
+        redraw();
     }
-    /**
-     * @return the color
-     */
+    
+    @Override
+    public void draw(Graphics g){
+        ImageIcon tortuga = new ImageIcon(getClass().getResource("tortuga.png"));
+        g.drawImage(tortuga.getImage(), posX, posY, width, height, null);
+    }
+    
     public Color getColor() {
         return color;
     }
@@ -48,16 +55,23 @@ public class Tortuga extends Sprite implements Drawable{
         return degree;
     }
 
-    /**
-     * @param degree the degree to set
-     */
     public void setDegree(int degree) {
         this.degree = degree;
     }
-
+    
+    public void changeDegree(int degree){
+        setDegree(degree);
+    }
+    
+    
+    
     @Override
     public void redraw() {
-        
+        drawable.redraw();
+    }
+    
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
     }
     
     

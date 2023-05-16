@@ -4,6 +4,8 @@
  */
 package co.edu.autonoma.classLogo;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author ASUS
@@ -13,6 +15,7 @@ public abstract class Sprite  {
     protected int posY;
     protected int width;
     protected int height;
+    protected Dimensionable area;
 
     public Sprite(int posX, int posY, int width, int height) {
         this.posX = posX;
@@ -20,6 +23,8 @@ public abstract class Sprite  {
         this.width = width;
         this.height = height;
     }
+    
+    public abstract void draw(Graphics g);
 
     /**
      * @return the posX
@@ -75,6 +80,10 @@ public abstract class Sprite  {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+    
+    public void setArea(Dimensionable area) {
+        this.area = area;
     }
     
 }

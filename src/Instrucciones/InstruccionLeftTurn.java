@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.edu.autonoma.classLogo;
+package Instrucciones;
 
 /**
  *
  * @author ASUS
  */
-public class InstruccionRigthTurn extends InstruccionTortuga{
+public class InstruccionLeftTurn extends InstruccionTortuga {
     private int degree;
 
-    public InstruccionRigthTurn(int degree) {
+    public InstruccionLeftTurn(int degree) {
         this.degree = degree;
     }
 
-
+    
     /**
      * @return the degree
      */
