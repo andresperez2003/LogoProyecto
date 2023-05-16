@@ -5,7 +5,15 @@
 package co.edu.autonoma.classLogo;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -60,14 +68,14 @@ public class LectorinstruccionesTortuga {
                 controlador.home();
             }
             case "l", "load" -> {
-                ArrayList<String> comand = controlador.load();
+                ArrayList<String> comand = load();
                 for(String comandos : comand ){
                 this.getIntrucciones().add(comandos);
                 read(comandos);
             }
             }
             case "s", "save" -> {
-                controlador.save(this.getIntrucciones());
+                save(this.getIntrucciones());
             }
             default -> {
                 return false;
@@ -98,6 +106,57 @@ public class LectorinstruccionesTortuga {
         };
     }
 
+    
+        public ArrayList<String> load(){
+        ArrayList<String> comandos = new ArrayList<>();
+        JFileChooser seleccionarArchivo = new JFileChooser();
+        seleccionarArchivo.setApproveButtonText("Guardar");
+        seleccionarArchivo.showSaveDialog(null);
+        
+        FileReader archivo;
+        BufferedReader lectorArchivo;
+
+        
+        try {
+            archivo = new FileReader(seleccionarArchivo.getSelectedFile());
+            if (archivo.ready()){
+                lectorArchivo = new BufferedReader(archivo);
+                String cadena;
+                while((cadena = lectorArchivo.readLine()) != null){
+                comandos.add(cadena);
+            }
+                System.out.println(comandos);
+            return comandos;
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+        
+    public void save(ArrayList<String> comandos){
+
+        JFileChooser guardarComo = new JFileChooser();
+        guardarComo.setApproveButtonText("Guardar");
+        guardarComo.showSaveDialog(null);
+        File f;
+        FileWriter escritorArchivo;
+        f = new File(guardarComo.getSelectedFile()+".txt");
+        
+        try {
+            escritorArchivo = new FileWriter(f);
+            
+            BufferedWriter bw = new BufferedWriter(escritorArchivo);
+            PrintWriter salida = new PrintWriter(bw);
+            for(String comando: comandos){
+                salida.write(comando+'\n');
+            }
+            salida.close();
+            bw.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     /**
      * @return the intrucciones
      */

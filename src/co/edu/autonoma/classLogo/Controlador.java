@@ -84,57 +84,6 @@ public class Controlador {
         InstruccionHome instruccionHome = new InstruccionHome();
         tortuga.resetPosition();
     }
-    
-    public ArrayList<String> load(){
-        ArrayList<String> comandos = new ArrayList<>();
-        JFileChooser seleccionarArchivo = new JFileChooser();
-        seleccionarArchivo.setApproveButtonText("Guardar");
-        seleccionarArchivo.showSaveDialog(null);
-        
-        FileReader archivo;
-        BufferedReader lectorArchivo;
-
-        
-        try {
-            archivo = new FileReader(seleccionarArchivo.getSelectedFile());
-            if (archivo.ready()){
-                lectorArchivo = new BufferedReader(archivo);
-                String cadena;
-                while((cadena = lectorArchivo.readLine()) != null){
-                comandos.add(cadena);
-            }
-                tortuga.redraw();
-                System.out.println(comandos);
-            return comandos;
-            }
-        } catch (Exception e) {
-        }
-        return null;
-    }
-    
-    public void save(ArrayList<String> comandos){
-
-        JFileChooser guardarComo = new JFileChooser();
-        guardarComo.setApproveButtonText("Guardar");
-        guardarComo.showSaveDialog(null);
-        File f;
-        FileWriter escritorArchivo;
-        f = new File(guardarComo.getSelectedFile()+".txt");
-        
-        try {
-            escritorArchivo = new FileWriter(f);
-            
-            BufferedWriter bw = new BufferedWriter(escritorArchivo);
-            PrintWriter salida = new PrintWriter(bw);
-            for(String comando: comandos){
-                salida.write(comando+'\n');
-            }
-            salida.close();
-            bw.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
         /**
      * @return the instruccion
      */
