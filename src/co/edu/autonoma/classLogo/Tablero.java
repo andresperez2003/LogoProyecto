@@ -19,7 +19,7 @@ public class Tablero extends Sprite implements Drawable, Dimensionable{
 
     public Tablero(int width, int height) {
         super(0, 0, width, height);
-        tortuga = new Tortuga(Color.BLACK, 270,width/2, height/2);
+        tortuga = new Tortuga(Color.BLACK, 0,width/2, height/2);
         tortuga.setDrawable(this);
         tortuga.setArea(this);
         controlador = new Controlador();

@@ -20,7 +20,7 @@ public class InstruccionRigthTurn extends InstruccionTortuga{
      * @return the degree
      */
     public int getDegree() {
-        return degree;
+        return -degree;
     }
 
     /**
