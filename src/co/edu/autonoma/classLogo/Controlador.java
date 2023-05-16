@@ -13,6 +13,12 @@ import Instrucciones.InstruccionForward;
 import Instrucciones.InstruccionHome;
 import Instrucciones.InstruccionReset;
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 /**
  *
@@ -80,8 +86,23 @@ public class Controlador {
         
     }
     
-    public void save(){
-        
+    public void save(String nombre,ArrayList<String> comandos){
+        File f;
+        FileWriter escritorArchivo;
+        try {
+            f = new File("C:\\Users\\ASUS\\OneDrive\\Documentos\\NetBeansProjects\\Logo\\src\\Archivos\\"+nombre+".txt");
+            escritorArchivo = new FileWriter(f);
+            
+            BufferedWriter bw = new BufferedWriter(escritorArchivo);
+            PrintWriter salida = new PrintWriter(bw);
+            for(String comando: comandos){
+                salida.write(comando+'\n');
+            }
+            salida.close();
+            bw.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
         /**
      * @return the instruccion
