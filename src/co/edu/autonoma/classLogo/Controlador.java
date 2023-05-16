@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 
 /**
  *
@@ -86,11 +87,16 @@ public class Controlador {
         
     }
     
-    public void save(String nombre,ArrayList<String> comandos){
+    public void save(ArrayList<String> comandos){
+        
+        JFileChooser guardarComo = new JFileChooser();
+        guardarComo.setApproveButtonText("Guardar");
+        guardarComo.showSaveDialog(null);
         File f;
         FileWriter escritorArchivo;
+        f = new File(guardarComo.getSelectedFile()+".txt");
+        
         try {
-            f = new File("C:\\Users\\ASUS\\OneDrive\\Documentos\\NetBeansProjects\\Logo\\src\\Archivos\\"+nombre+".txt");
             escritorArchivo = new FileWriter(f);
             
             BufferedWriter bw = new BufferedWriter(escritorArchivo);

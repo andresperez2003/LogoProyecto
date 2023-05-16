@@ -55,7 +55,6 @@ public class Window extends javax.swing.JFrame implements Drawable{
         txtComandos = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
         btnInstrucciones = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,20 +72,16 @@ public class Window extends javax.swing.JFrame implements Drawable{
             }
         });
 
-        jButton4.setText("Cargar archivo");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
-                .addComponent(txtComandos, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtComandos, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmar)
-                .addGap(28, 28, 28)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnInstrucciones)
                 .addGap(52, 52, 52))
         );
@@ -97,8 +92,7 @@ public class Window extends javax.swing.JFrame implements Drawable{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtComandos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConfirmar)
-                    .addComponent(btnInstrucciones)
-                    .addComponent(jButton4))
+                    .addComponent(btnInstrucciones))
                 .addGap(28, 28, 28))
         );
 
@@ -138,7 +132,6 @@ public class Window extends javax.swing.JFrame implements Drawable{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnInstrucciones;
-    private javax.swing.JButton jButton4;
     private javax.swing.JTextField txtComandos;
     // End of variables declaration//GEN-END:variables
 

@@ -63,8 +63,7 @@ public class LectorinstruccionesTortuga {
                 controlador.load();
             }
             case "s", "save" -> {
-                String name = division[1].toLowerCase();
-                controlador.save(name,this.getIntrucciones());
+                controlador.save(this.getIntrucciones());
             }
             default -> {
                 return false;
