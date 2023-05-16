@@ -13,8 +13,10 @@ import Instrucciones.InstruccionForward;
 import Instrucciones.InstruccionHome;
 import Instrucciones.InstruccionReset;
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -83,12 +85,35 @@ public class Controlador {
         tortuga.resetPosition();
     }
     
-    public void load(){
+    public ArrayList<String> load(){
+        ArrayList<String> comandos = new ArrayList<>();
+        JFileChooser seleccionarArchivo = new JFileChooser();
+        seleccionarArchivo.setApproveButtonText("Guardar");
+        seleccionarArchivo.showSaveDialog(null);
         
+        FileReader archivo;
+        BufferedReader lectorArchivo;
+
+        
+        try {
+            archivo = new FileReader(seleccionarArchivo.getSelectedFile());
+            if (archivo.ready()){
+                lectorArchivo = new BufferedReader(archivo);
+                String cadena;
+                while((cadena = lectorArchivo.readLine()) != null){
+                comandos.add(cadena);
+            }
+                tortuga.redraw();
+                System.out.println(comandos);
+            return comandos;
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
     
     public void save(ArrayList<String> comandos){
-        
+
         JFileChooser guardarComo = new JFileChooser();
         guardarComo.setApproveButtonText("Guardar");
         guardarComo.showSaveDialog(null);

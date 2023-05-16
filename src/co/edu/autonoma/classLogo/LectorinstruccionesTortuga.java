@@ -60,7 +60,11 @@ public class LectorinstruccionesTortuga {
                 controlador.home();
             }
             case "l", "load" -> {
-                controlador.load();
+                ArrayList<String> comand = controlador.load();
+                for(String comandos : comand ){
+                this.getIntrucciones().add(comandos);
+                read(comandos);
+            }
             }
             case "s", "save" -> {
                 controlador.save(this.getIntrucciones());
